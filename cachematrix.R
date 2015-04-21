@@ -10,11 +10,17 @@ makeCacheMatrix <- function(x = matrix()) {
         mat <<- NULL
     }
     
-    get <- function() x
+    get <- function(){
+        x
+    } 
     
-    setinv <- function(solve) mat <<-solve
+    setinv <- function(solve) {
+        mat <<-solve
+    }
     
-    getinv <- function() mat
+    getinv <- function(){
+        mat
+    }
     list(set = set, get = get, 
          setinv = setinv, 
          getinv = getinv)
@@ -22,9 +28,11 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## his function computes the inverse of the special "matrix" 
+## This function computes the inverse of the special "matrix" 
 ## returned by makeCacheMatrix above.
 ## assuming that the matrix returned is always square and invertible
+## if the inverse has already been calculated, it returns the cached 
+## inverse matrix
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
